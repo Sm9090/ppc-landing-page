@@ -1,0 +1,20 @@
+.menu-active .menu_links {
+    color: #000 !important;
+}
+.light-theme header .menu_links {
+    color: #000;
+}
+.text-sm {
+    font-size: 13px !important;
+}
+.w-24--7 {
+    width: calc(24% - 2px);
+}
+.w-\[19\%\] {
+    width: 19%;
+}
+@media (min-width: 1440px) {
+    .\32xl\:w-44 {
+        width: 13rem
+    }
+}
