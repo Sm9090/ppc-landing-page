@@ -1,68 +1,89 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const counters = [
-  {
-    count: 650,
-    speed: 3000,
-    title: 'Applications Developed and Designed',
-    delay: '0ms',
-  },
-  {
-    count: 590,
-    speed: 5000,
-    title: 'In-house App Development Team & Software Engineers',
-    delay: '300ms',
-  },
-  {
-    count: 10,
-    speed: 2000,
-    title: 'Providing Mobile App Service in USA Since 2008',
-    delay: '600ms',
-  },
-  {
-    count: 450,
-    speed: 3500,
-    title: 'Satisfied Mobile App Clients in All Over Globe',
-    delay: '900ms',
-  },
-];
+const Counter = ({ end }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 2000;
+    const increment = end / (duration / 16);
+
+    const updateCounter = () => {
+      start += increment;
+      if (start < end) {
+        ref.current.innerText = Math.floor(start);
+        requestAnimationFrame(updateCounter);
+      } else {
+        ref.current.innerText = end;
+      }
+    };
+
+    requestAnimationFrame(updateCounter);
+  }, [end]);
+
+  return <span ref={ref}>0</span>;
+};
 
 const CounterSection = () => {
   return (
-    <section className="counter-section mt-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="inner-container">
-          {/* Fact Counter */}
-          <div className="fact-counter">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {counters.map(({ count, speed, title, delay }, index) => (
-                <div className="counter-column" key={index}>
-                  <div
-                    className="inner animate-fadeInLeft"
-                    style={{
-                      visibility: 'visible',
-                      animationDuration: '1500ms',
-                      animationDelay: delay,
-                      animationName: 'fadeInLeft',
-                    }}
-                  >
-                    <div className="content">
-                      <div className="count-outer count-box counted">
-                        <span
-                          className="count-text"
-                          data-speed={speed}
-                          data-stop={count}
-                        >
-                          {count}
-                        </span>
-                        +
-                      </div>
-                      <h4 className="counter-title">{title}</h4>
-                    </div>
-                  </div>
+    <section id="project-stats">
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-14 md:pt-24 lg:pt-[10.5rem] lg:pb-24 lg:px-8 undefined">
+        <div className="max-w-3xl xl:max-w-4xl">
+          <div className="lg:overflow-hidden">
+            <h2 className="font-bold pb-1 md:pb-0 sentence-first-letter sentence-first-letter text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] lg:-translate-y-[7px] xl:!leading-[55px] 2xl:!leading-[65px]">
+              <span>
+                15+ years of being a leading mobile app development company
+              </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div className="undefined mx-auto max-w-7xl px-6 lg:px-8" id="project-stats">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-8 gap-y-8">
+          <div className="flex flex-col gap-y-2 w-max">
+            <a className="cursor-pointer group inline-flex flex-col gap-y-2" href="#">
+              <div className="inline-flex">
+                <span className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  <Counter end={1300} />
+                </span>
+                <div className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  +
                 </div>
-              ))}
-            </div>
+              </div>
+              <p className="group-hover:underline underline-offset-[9px] decoration-1 inline text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+                Completed Projects
+              </p>
+            </a>
+          </div>
+          <div className="flex flex-col gap-y-2 w-max">
+            <a className="cursor-pointer group inline-flex flex-col gap-y-2" href="#">
+              <div className="inline-flex">
+                <span className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  <Counter end={350} />
+                </span>
+                <div className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  +
+                </div>
+              </div>
+              <p className="group-hover:underline underline-offset-[9px] decoration-1 inline text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+                Designers &amp; Developers
+              </p>
+            </a>
+          </div>
+          <div className="flex flex-col gap-y-2 w-max">
+            <a className="cursor-pointer group inline-flex flex-col gap-y-2" href="#">
+              <div className="inline-flex">
+                <span className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  <Counter end={600} />
+                </span>
+                <div className="group-hover:text-[#2ED06E] font-bold text-4xl xl:text-5xl 2xl:text-6xl tracking-[-2px] xl:!leading-[55px] 2xl:!leading-[65px]">
+                  +
+                </div>
+              </div>
+              <p className="group-hover:underline underline-offset-[9px] decoration-1 inline text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+                Satisfied Clients Globally
+              </p>
+            </a>
           </div>
         </div>
       </div>
