@@ -58,7 +58,7 @@ const ServicesTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="serviceTabs-sec">
+    <section className="serviceTabs-sec" id="serviceTabs">
       <div className="undefined mx-auto max-w-7xl px-6 pt-14 md:pt-24 lg:pt-[10.5rem] lg:px-8">
         <div className="max-w-3xl xl:max-w-4xl">
           <div className="lg:overflow-hidden">
